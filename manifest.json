@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "Ninja",
+    "version": "1.4",
+    "author": "Sahithyan",
+    "description": "Opening your current website in incognito mode is moslty irritative. That's why Ninja is developed",
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "icons": {
+        "128": "icons/logo.png"
+    },
+    "browser_action": {
+        "default_icon": "icons/logo – light@2x.png",
+        "default_title": "Open Ninja Board",
+        "default_popup": "popup/index.html"
+    }
+}
