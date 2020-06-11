@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" theme="light">
+<head>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+    <div class="section">
+        <h1 class="section-heading">
+            Private Websites
+        </h1>
+        <template id="private-website-item-template">
+            <div class="private-website-item">
+                <span class="item-name"></span>
+                <span class="delete-icon-container">
+                    <img src="./../icons/trash-outline.svg" alt="delete icon" class="icon">
+                </span>
+            </div>
+        </template>
+        
+        <div class="item-list-container" id="private-websites-container">
+           
+        </div>
+        <!-- <div class="hint">
+            When you are on a website, Use <code>CTRL + ALT + Z</code> to add/remove that to/from Private Websites.
+        </div> -->
+        <button class="button" id="add-private-website-button">Add</button>
+    </div>
+
+    <!-- <input type="text" /> -->
+    <script src="./../global.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

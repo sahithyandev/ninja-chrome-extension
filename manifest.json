@@ -6,18 +6,39 @@
     "description": "Opening your current website in incognito mode is moslty irritative. That's why Ninja is developed",
     "background": {
         "scripts": [
+            "global.js",
             "background.js"
         ]
     },
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "storage",
+        "history",
+        "webNavigation"
     ],
     "icons": {
         "128": "icons/logo.png"
     },
     "browser_action": {
         "default_icon": "icons/logo – light@2x.png",
-        "default_title": "Open Ninja Board",
-        "default_popup": "popup/index.html"
+        "default_title": "Open Ninja Board"
+    },
+    "options_ui": {
+        "page": "options/index.html",
+        "open_in_tab": true
+    },
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key": {
+                "windows": "Alt+Z"
+            },
+            "description": "Open current tab in Private/Incognito mode"
+        },
+        "add_private_website": {
+            "suggested_key": {
+                "windows": "Ctrl+Shift+Z"
+            },
+            "description": "Add current website to Private Websites list"
+        }
     }
 }
