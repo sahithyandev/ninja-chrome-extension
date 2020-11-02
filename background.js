@@ -3,22 +3,32 @@ if (matchMedia('(prefers-color-scheme: dark)').matches) {
     chrome.storage.sync.set({
         theme: 'dark'
     })
-    chrome.browserAction.setIcon({ path: 'icons/logo – dark@2x.png' })
+    // chrome.browserAction.setIcon({ path: 'icons/logo – dark@2x.png' })
 }
 let privateWebsites = [];
+
 function retrieveOptions() {
     chrome.storage.sync.get({ privateWebsites: [''] }, items => {
         privateWebsites = items.privateWebsites
     })
 }
-retrieveOptions();
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
     retrieveOptions();
 })
 
+retrieveOptions();
+
+const isChromeURL = (url) => url.split(':')[0] === "chrome";
+
 function openLinkInIncognito(tab) {
     const { id, url } = tab;
+
+    if (isChromeURL(url)) {
+        alert("Chrome URLs can't be opened in about");
+        return;
+    }
+
     try {
         chrome.tabs.remove(id, function () { });
         chrome.windows.create({ url: url, incognito: true });
@@ -50,10 +60,12 @@ chrome.webNavigation.onCommitted.addListener(details => {
 })
 chrome.commands.onCommand.addListener(async command => {
     console.log(`${command} activated`);
+
     if (command == 'add_private_website') {
         let activeTab = await getActiveTab()
         let activeTabHostname = new URL(activeTab.url).hostname;
         console.log(activeTabHostname)
+
         let newPrivateWebsites = [...privateWebsites];
         let message = '';
         if (privateWebsites.includes(activeTabHostname)) {

@@ -1,6 +1,6 @@
 # Ninja - Chrome Extension
 
-Ninja is a chrome extension which focuses on Private Mode. Ninja helps to open websites in Private faster.
+Ninja is a chrome extension which focuses on Private Mode. Ninja helps to open websites in Private mode faster.
 
 ## How to use it?
 
@@ -12,11 +12,11 @@ To do that, follow these steps
 1. Visit the website.
 2. Press `CTRL + SHIFT + Z`.
 3. From now on, the website will be opened up in a Private window everytime you load that website.
-4. If you want to remove that website from the Private Websites list, follow these steps
-   1. Right click on Ninja chrome extension icon.
-   2. Click `Options`.
-   3. Delete the websites you don't want.
+
+If you want to remove that website from the Private Websites list, follow these steps 1. Right click on Ninja chrome extension icon. 2. Click `Options`. 3. Delete the websites you don't want.
 
 ## Contribution
+
+PRs are always welcomed.
 
 Take a look at [TODO.md](./TODO.md) to see what needs to be done.
