@@ -1,0 +1,11 @@
+{
+  "name": "ninja-chrome-extension",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:sahithyandev/ninja-chrome-extension.git",
+  "author": "Sahithyan <sahithyan2701@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.158"
+  }
+}
