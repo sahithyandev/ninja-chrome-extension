@@ -1,11 +1,15 @@
-// @sts-nocheck
-if (matchMedia("(prefers-color-scheme: dark)").matches) {
-	chrome.storage.sync.set({
-		theme: "dark",
-	});
-	chrome.action.setIcon({ path: "icons/logo – dark@2x.png" });
-}
+const removeFromArray = (arr, itemToRemove) => {
+	return arr.filter((item) => item !== itemToRemove);
+};
+
+const isChromeURL = (url) => url.split(":")[0] === "chrome";
+
 let privateWebsites = [];
+
+// TODO fix
+// if (matchMedia("(prefers-color-scheme: dark)").matches) {
+// 	chrome.storage.sync.set({ theme: "dark" });
+// }
 
 function retrieveOptions() {
 	chrome.storage.sync.get({ privateWebsites: [""] }, (items) => {
@@ -18,8 +22,6 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 });
 
 retrieveOptions();
-
-const isChromeURL = (url) => url.split(":")[0] === "chrome";
 
 function openLinkInIncognito(tab) {
 	const { id, url } = tab;
@@ -40,6 +42,8 @@ function openLinkInIncognito(tab) {
 	}
 }
 
+chrome.action.onClicked.addListener(openLinkInIncognito);
+
 function getActiveTab() {
 	return new Promise((resolve, reject) => {
 		chrome.tabs.query({ active: true }, (items) => {
@@ -47,8 +51,6 @@ function getActiveTab() {
 		});
 	});
 }
-
-chrome.action.onClicked.addListener(openLinkInIncognito);
 
 chrome.webNavigation.onCommitted.addListener((details) => {
 	if (details.frameId == 0) {
@@ -86,5 +88,3 @@ chrome.commands.onCommand.addListener(async (command) => {
 		});
 	}
 });
-
-console.log(removeFromArray);
