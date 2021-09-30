@@ -6,6 +6,9 @@
   "author": "Sahithyan <sahithyan2701@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/chrome": "^0.0.158"
+    "@types/chrome": "^0.0.158",
+    "chrome-webstore-upload": "^0.6.1",
+    "dotenv": "^10.0.0",
+    "zip-folder": "^1.0.0"
   }
 }
