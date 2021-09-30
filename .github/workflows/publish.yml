@@ -1,0 +1,27 @@
+name: Publish To Chrome Webstore
+
+on:
+  push:
+    branches: [release]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js 15.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 15.x
+          cache: "yarn"
+
+      - name: Install deps
+        run: yarn --frozen-lockfile
+
+      - name: Publish
+        run: node ./scripts/publish
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
